@@ -8,4 +8,5 @@ abstract class AppColors {
   static const Color focusedBorder = Color.fromARGB(225, 0, 117, 251);
   static const Color button = Color.fromARGB(225, 0, 117, 251);
   static const Color suraface = Color.fromARGB(225, 243, 243, 243);
+  static const Color suraface2 = Color.fromARGB(225, 243, 243, 243);
 }
