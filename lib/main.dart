@@ -1,4 +1,5 @@
 import 'package:bloc_watch_store/components/theme.dart';
+import 'package:bloc_watch_store/screens/get_otp_screen.dart';
 import 'package:bloc_watch_store/screens/send_otp_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: lightTheme(),
-      home: SendOtpScreen(),
+      home: GetOtpScreen(),
     );
   }
 }
