@@ -1,4 +1,5 @@
 import 'package:bloc_watch_store/components/extention.dart';
+import 'package:bloc_watch_store/components/text_style.dart';
 import 'package:bloc_watch_store/gen/assets.gen.dart';
 import 'package:bloc_watch_store/res/dimesns.dart';
 import 'package:bloc_watch_store/res/stings.dart';
@@ -23,9 +24,11 @@ class GetOtpScreen extends StatelessWidget {
           Text(
             AppStrings.otpCodeSendFor
                 .replaceAll(AppStrings.replace, "+35797671079"),
+            style: LightTextAppStyle.title,
           ),
           const Text(
             AppStrings.wrongNumberEditNumber,
+            style: LightTextAppStyle.primeriLinks,
           ),
           Dimens.meduim.height,
           AppTextField(

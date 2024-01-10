@@ -1,4 +1,5 @@
 import 'package:bloc_watch_store/components/extention.dart';
+import 'package:bloc_watch_store/components/text_style.dart';
 import 'package:bloc_watch_store/res/dimesns.dart';
 import 'package:flutter/material.dart';
 
@@ -33,8 +34,14 @@ class AppTextField extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(prefixlable),
-              Text(lable),
+              Text(
+                prefixlable,
+                style: LightTextAppStyle.title,
+              ),
+              Text(
+                lable,
+                style: LightTextAppStyle.title,
+              ),
             ],
           ),
         ),
@@ -47,6 +54,7 @@ class AppTextField extends StatelessWidget {
             keyboardType: inputType,
             textAlign: textAlign,
             decoration: InputDecoration(
+              hintStyle: LightTextAppStyle.hint,
               hintText: hint,
               prefixIcon: icon,
             ),

@@ -1,4 +1,5 @@
 import 'package:bloc_watch_store/components/extention.dart';
+import 'package:bloc_watch_store/components/text_style.dart';
 import 'package:bloc_watch_store/gen/assets.gen.dart';
 import 'package:bloc_watch_store/res/dimesns.dart';
 import 'package:bloc_watch_store/res/stings.dart';
@@ -20,7 +21,10 @@ class Avatar extends StatelessWidget {
           child: Image.asset(_avatarImg),
         ),
         Dimens.meduim.height,
-        const Text(AppStrings.chooseProfileImage)
+        const Text(
+          AppStrings.chooseProfileImage,
+          style: LightTextAppStyle.avatar,
+        )
       ],
     );
   }
