@@ -30,8 +30,9 @@ class AppTextField extends StatelessWidget {
       padding: const EdgeInsets.all(Dimens.meduim),
       child: Column(children: [
         SizedBox(
-          width: size.width * 0.07,
+          width: size.width * 0.7,
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
@@ -47,8 +48,8 @@ class AppTextField extends StatelessWidget {
         ),
         Dimens.meduim.height,
         SizedBox(
-          width: size.width * 0.07,
-          height: size.height * 0.75,
+          width: size.width * 0.7,
+          // height: size.height * 0.075,
           child: TextField(
             controller: controller,
             keyboardType: inputType,

@@ -1,10 +1,10 @@
 import 'package:bloc_watch_store/components/extention.dart';
-import 'package:bloc_watch_store/components/text_style.dart';
 import 'package:bloc_watch_store/res/dimesns.dart';
 import 'package:bloc_watch_store/res/stings.dart';
 import 'package:bloc_watch_store/widgets/app_text_field.dart';
 import 'package:bloc_watch_store/widgets/avatar.dart';
 import 'package:bloc_watch_store/widgets/main_button.dart';
+import 'package:bloc_watch_store/widgets/registration_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -16,20 +16,7 @@ class RegisterScreen extends StatelessWidget {
     TextEditingController nameLastnameControler = TextEditingController();
     return SafeArea(
       child: Scaffold(
-        appBar: PreferredSize(
-            preferredSize: Size(size.width, size.height * 0.1),
-            child: Row(
-              children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.arrow_back),
-                ),
-                const Text(
-                  AppStrings.register,
-                  style: LightTextAppStyle.title,
-                )
-              ],
-            )),
+        appBar: RegistrationAppBar(size: size),
         body: SizedBox(
           width: double.infinity,
           child: SingleChildScrollView(
