@@ -1,6 +1,7 @@
 import 'package:bloc_watch_store/components/extention.dart';
 import 'package:bloc_watch_store/res/dimesns.dart';
 import 'package:bloc_watch_store/res/stings.dart';
+import 'package:bloc_watch_store/route/screen_names.dart';
 import 'package:bloc_watch_store/widgets/app_text_field.dart';
 import 'package:bloc_watch_store/widgets/avatar.dart';
 import 'package:bloc_watch_store/widgets/main_button.dart';
@@ -49,7 +50,9 @@ class RegisterScreen extends StatelessWidget {
                     icon: const Icon(Icons.location_on),
                   ),
                   MainButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, ScreenNames.mainScreen);
+                    },
                     text: AppStrings.next,
                   ),
                   Dimens.large.height,

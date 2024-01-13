@@ -4,4 +4,5 @@ class ScreenNames {
   static const rootScreen = "/";
   static const registerationScreen = "registerationScreen";
   static const getOtpScreen = "getOtpScreen";
+  static const mainScreen = "mainScreen";
 }
