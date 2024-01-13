@@ -10,6 +10,16 @@ class LightTextAppStyle {
     fontSize: 14,
     color: AppColors.title,
   );
+  static const TextStyle navigationBtmActive = TextStyle(
+    fontFamily: FontFamily.dana,
+    fontSize: 12,
+    color: AppColors.btmNavActiveItem,
+  );
+  static const TextStyle navigationBtmInActive = TextStyle(
+    fontFamily: FontFamily.dana,
+    fontSize: 12,
+    color: AppColors.btmNavInActiveItem,
+  );
   static const TextStyle hint = TextStyle(
     fontFamily: FontFamily.dana,
     fontSize: 14,
