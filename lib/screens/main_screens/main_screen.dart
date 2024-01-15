@@ -36,7 +36,14 @@ class _MainScreenState extends State<MainScreen> {
           right: 0,
           child: IndexedStack(
               index: indexStack,
-              children: const [HomeScreen(), ProfileScreen(), BascketScreen()]),
+              children:  [
+                Navigator( onGenerateRoute: (settings) => MaterialPageRoute(
+                  builder: (context) => const HomeScreen()
+                  ,),
+                  ),
+                 const ProfileScreen(), const BascketScreen(),
+                 ],
+                 ),
         ),
         Positioned(
           bottom: 0,
