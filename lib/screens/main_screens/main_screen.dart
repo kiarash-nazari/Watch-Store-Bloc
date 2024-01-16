@@ -21,10 +21,13 @@ class MainScreen extends StatefulWidget {
   State<MainScreen> createState() => _MainScreenState();
 }
 
+List<int> routeHistory = [0];
+
 int indexStack = ScreenButtonNavigationIndex.homeIndex;
 final GlobalKey<NavigatorState> _homeScreenKey = GlobalKey();
 final GlobalKey<NavigatorState> _profileScreenKey = GlobalKey();
 final GlobalKey<NavigatorState> _bascketScreenKey = GlobalKey();
+
 Map<int, GlobalKey<NavigatorState>> map = {
   ScreenButtonNavigationIndex.homeIndex: _homeScreenKey,
   ScreenButtonNavigationIndex.profilIndex: _profileScreenKey,
@@ -39,7 +42,12 @@ class _MainScreenState extends State<MainScreen> {
     final Function(dynamic) canPop = ((didPop) {
       if (map[indexStack]!.currentState!.canPop()) {
         map[indexStack]!.currentState!.pop();
+      } else if (routeHistory.length > 1) {
+        routeHistory.removeLast();
+        indexStack = routeHistory.last;
+        setState(() {});
       }
+      print(routeHistory);
     });
     return PopScope(
       canPop: false,
@@ -52,7 +60,7 @@ class _MainScreenState extends State<MainScreen> {
             left: 0,
             right: 0,
             child: IndexedStack(
-              index: indexStack,
+              index: routeHistory.last,
               children: [
                 Navigator(
                   key: _homeScreenKey,
@@ -91,24 +99,30 @@ class _MainScreenState extends State<MainScreen> {
                       title: AppStrings.profile,
                       isActive:
                           indexStack == ScreenButtonNavigationIndex.profilIndex,
-                      onTap: () => btnNavOnPress(
-                          index: ScreenButtonNavigationIndex.profilIndex),
+                      onTap: () {
+                        btnNavOnPress(
+                            index: ScreenButtonNavigationIndex.profilIndex);
+                      },
                     ),
                     NavigationButton(
                       svgPath: Assets.svg.cart,
                       title: AppStrings.basket,
                       isActive:
                           indexStack == ScreenButtonNavigationIndex.basketIndex,
-                      onTap: () => btnNavOnPress(
-                          index: ScreenButtonNavigationIndex.basketIndex),
+                      onTap: () {
+                        btnNavOnPress(
+                            index: ScreenButtonNavigationIndex.basketIndex);
+                      },
                     ),
                     NavigationButton(
                       svgPath: Assets.svg.home,
                       title: AppStrings.home,
                       isActive:
                           indexStack == ScreenButtonNavigationIndex.homeIndex,
-                      onTap: () => btnNavOnPress(
-                          index: ScreenButtonNavigationIndex.homeIndex),
+                      onTap: () {
+                        btnNavOnPress(
+                            index: ScreenButtonNavigationIndex.homeIndex);
+                      },
                     ),
                   ]),
             ),
@@ -121,6 +135,7 @@ class _MainScreenState extends State<MainScreen> {
   btnNavOnPress({required index}) {
     setState(() {
       indexStack = index;
+      routeHistory.add(index);
     });
   }
 }
