@@ -22,68 +22,99 @@ class MainScreen extends StatefulWidget {
 }
 
 int indexStack = ScreenButtonNavigationIndex.homeIndex;
+final GlobalKey<NavigatorState> _homeScreenKey = GlobalKey();
+final GlobalKey<NavigatorState> _profileScreenKey = GlobalKey();
+final GlobalKey<NavigatorState> _bascketScreenKey = GlobalKey();
+Map<int, GlobalKey<NavigatorState>> map = {
+  ScreenButtonNavigationIndex.homeIndex: _homeScreenKey,
+  ScreenButtonNavigationIndex.profilIndex: _profileScreenKey,
+  ScreenButtonNavigationIndex.basketIndex: _bascketScreenKey
+};
 
 class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      body: Stack(children: [
-        Positioned(
-          top: 0,
-          bottom: size.height * 0.1,
-          left: 0,
-          right: 0,
-          child: IndexedStack(
+
+    final Function(dynamic) canPop = ((didPop) {
+      if (map[indexStack]!.currentState!.canPop()) {
+        map[indexStack]!.currentState!.pop();
+      }
+    });
+    return PopScope(
+      canPop: false,
+      onPopInvoked: canPop,
+      child: Scaffold(
+        body: Stack(children: [
+          Positioned(
+            top: 0,
+            bottom: size.height * 0.1,
+            left: 0,
+            right: 0,
+            child: IndexedStack(
               index: indexStack,
-              children:  [
-                Navigator( onGenerateRoute: (settings) => MaterialPageRoute(
-                  builder: (context) => const HomeScreen()
-                  ,),
+              children: [
+                Navigator(
+                  key: _homeScreenKey,
+                  onGenerateRoute: (settings) => MaterialPageRoute(
+                    builder: (context) => const HomeScreen(),
                   ),
-                 const ProfileScreen(), const BascketScreen(),
-                 ],
-                 ),
-        ),
-        Positioned(
-          bottom: 0,
-          left: 0,
-          right: 0,
-          child: Container(
-            height: size.height * 0.1,
-            color: AppColors.btmNavColor,
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  NavigationButton(
-                    svgPath: Assets.svg.user,
-                    title: AppStrings.profile,
-                    isActive:
-                        indexStack == ScreenButtonNavigationIndex.profilIndex,
-                    onTap: () => btnNavOnPress(
-                        index: ScreenButtonNavigationIndex.profilIndex),
+                ),
+                Navigator(
+                  key: _profileScreenKey,
+                  onGenerateRoute: (settings) => MaterialPageRoute(
+                    builder: (context) => const ProfileScreen(),
                   ),
-                  NavigationButton(
-                    svgPath: Assets.svg.cart,
-                    title: AppStrings.basket,
-                    isActive:
-                        indexStack == ScreenButtonNavigationIndex.basketIndex,
-                    onTap: () => btnNavOnPress(
-                        index: ScreenButtonNavigationIndex.basketIndex),
+                ),
+                Navigator(
+                  key: _bascketScreenKey,
+                  onGenerateRoute: (settings) => MaterialPageRoute(
+                    builder: (context) => const BascketScreen(),
                   ),
-                  NavigationButton(
-                    svgPath: Assets.svg.home,
-                    title: AppStrings.home,
-                    isActive:
-                        indexStack == ScreenButtonNavigationIndex.homeIndex,
-                    onTap: () => btnNavOnPress(
-                        index: ScreenButtonNavigationIndex.homeIndex),
-                  ),
-                ]),
+                ),
+              ],
+            ),
           ),
-        ),
-      ]),
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              height: size.height * 0.1,
+              color: AppColors.btmNavColor,
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    NavigationButton(
+                      svgPath: Assets.svg.user,
+                      title: AppStrings.profile,
+                      isActive:
+                          indexStack == ScreenButtonNavigationIndex.profilIndex,
+                      onTap: () => btnNavOnPress(
+                          index: ScreenButtonNavigationIndex.profilIndex),
+                    ),
+                    NavigationButton(
+                      svgPath: Assets.svg.cart,
+                      title: AppStrings.basket,
+                      isActive:
+                          indexStack == ScreenButtonNavigationIndex.basketIndex,
+                      onTap: () => btnNavOnPress(
+                          index: ScreenButtonNavigationIndex.basketIndex),
+                    ),
+                    NavigationButton(
+                      svgPath: Assets.svg.home,
+                      title: AppStrings.home,
+                      isActive:
+                          indexStack == ScreenButtonNavigationIndex.homeIndex,
+                      onTap: () => btnNavOnPress(
+                          index: ScreenButtonNavigationIndex.homeIndex),
+                    ),
+                  ]),
+            ),
+          ),
+        ]),
+      ),
     );
   }
 
