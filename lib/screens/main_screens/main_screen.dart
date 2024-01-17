@@ -6,7 +6,6 @@ import 'package:bloc_watch_store/screens/main_screens/home_screen.dart';
 import 'package:bloc_watch_store/screens/main_screens/profile_screen.dart';
 import 'package:bloc_watch_store/widgets/navigation_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class ScreenButtonNavigationIndex {
   static const homeIndex = 0;
