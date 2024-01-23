@@ -1,11 +1,12 @@
-import 'package:bloc_watch_store/gen/assets.gen.dart';
-import 'package:bloc_watch_store/res/colors.dart';
-import 'package:bloc_watch_store/res/stings.dart';
-import 'package:bloc_watch_store/screens/main_screens/bascket_screen.dart';
-import 'package:bloc_watch_store/screens/main_screens/home_screen.dart';
-import 'package:bloc_watch_store/screens/main_screens/profile_screen.dart';
-import 'package:bloc_watch_store/widgets/navigation_button.dart';
+
 import 'package:flutter/material.dart';
+import 'package:watch_store_bloc/gen/assets.gen.dart';
+import 'package:watch_store_bloc/res/colors.dart';
+import 'package:watch_store_bloc/res/stings.dart';
+import 'package:watch_store_bloc/screens/main_screens/bascket_screen.dart';
+import 'package:watch_store_bloc/screens/main_screens/home_screen.dart';
+import 'package:watch_store_bloc/screens/main_screens/profile_screen.dart';
+import 'package:watch_store_bloc/widgets/navigation_button.dart';
 
 class ScreenButtonNavigationIndex {
   static const homeIndex = 0;

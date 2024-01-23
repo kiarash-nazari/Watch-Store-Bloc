@@ -1,6 +1,7 @@
-import 'package:bloc_watch_store/gen/fonts.gen.dart';
-import 'package:bloc_watch_store/res/colors.dart';
+
 import 'package:flutter/material.dart';
+import 'package:watch_store_bloc/gen/fonts.gen.dart';
+import 'package:watch_store_bloc/res/colors.dart';
 
 class LightTextAppStyle {
   LightTextAppStyle._();

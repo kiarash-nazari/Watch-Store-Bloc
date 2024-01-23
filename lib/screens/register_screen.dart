@@ -1,12 +1,13 @@
-import 'package:bloc_watch_store/components/extention.dart';
-import 'package:bloc_watch_store/res/dimesns.dart';
-import 'package:bloc_watch_store/res/stings.dart';
-import 'package:bloc_watch_store/route/screen_names.dart';
-import 'package:bloc_watch_store/widgets/app_text_field.dart';
-import 'package:bloc_watch_store/widgets/avatar.dart';
-import 'package:bloc_watch_store/widgets/main_button.dart';
-import 'package:bloc_watch_store/widgets/registration_app_bar.dart';
+
 import 'package:flutter/material.dart';
+import 'package:watch_store_bloc/components/extention.dart';
+import 'package:watch_store_bloc/res/dimesns.dart';
+import 'package:watch_store_bloc/res/stings.dart';
+import 'package:watch_store_bloc/route/screen_names.dart';
+import 'package:watch_store_bloc/widgets/app_text_field.dart';
+import 'package:watch_store_bloc/widgets/avatar.dart';
+import 'package:watch_store_bloc/widgets/main_button.dart';
+import 'package:watch_store_bloc/widgets/registration_app_bar.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});

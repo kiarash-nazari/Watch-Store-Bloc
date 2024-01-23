@@ -1,6 +1,7 @@
-import 'package:bloc_watch_store/res/colors.dart';
-import 'package:bloc_watch_store/res/dimesns.dart';
+
 import 'package:flutter/material.dart';
+import 'package:watch_store_bloc/res/colors.dart';
+import 'package:watch_store_bloc/res/dimesns.dart';
 
 class AppButtonStyle {
   AppButtonStyle._();

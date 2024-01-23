@@ -1,9 +1,10 @@
-import 'package:bloc_watch_store/components/extention.dart';
-import 'package:bloc_watch_store/components/text_style.dart';
-import 'package:bloc_watch_store/gen/assets.gen.dart';
-import 'package:bloc_watch_store/res/dimesns.dart';
-import 'package:bloc_watch_store/res/stings.dart';
+
 import 'package:flutter/material.dart';
+import 'package:watch_store_bloc/components/extention.dart';
+import 'package:watch_store_bloc/components/text_style.dart';
+import 'package:watch_store_bloc/gen/assets.gen.dart';
+import 'package:watch_store_bloc/res/dimesns.dart';
+import 'package:watch_store_bloc/res/stings.dart';
 
 class Avatar extends StatelessWidget {
   Avatar({Key? key, String? avatarImg}) : super(key: key) {

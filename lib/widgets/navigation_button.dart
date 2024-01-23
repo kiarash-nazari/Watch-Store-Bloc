@@ -1,7 +1,8 @@
-import 'package:bloc_watch_store/components/text_style.dart';
-import 'package:bloc_watch_store/res/colors.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:watch_store_bloc/components/text_style.dart';
+import 'package:watch_store_bloc/res/colors.dart';
 
 class NavigationButton extends StatelessWidget {
   const NavigationButton(

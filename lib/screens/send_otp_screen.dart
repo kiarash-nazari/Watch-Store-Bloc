@@ -1,11 +1,12 @@
-import 'package:bloc_watch_store/components/extention.dart';
-import 'package:bloc_watch_store/gen/assets.gen.dart';
-import 'package:bloc_watch_store/res/dimesns.dart';
-import 'package:bloc_watch_store/res/stings.dart';
-import 'package:bloc_watch_store/route/screen_names.dart';
-import 'package:bloc_watch_store/widgets/app_text_field.dart';
-import 'package:bloc_watch_store/widgets/main_button.dart';
+
 import 'package:flutter/material.dart';
+import 'package:watch_store_bloc/components/extention.dart';
+import 'package:watch_store_bloc/gen/assets.gen.dart';
+import 'package:watch_store_bloc/res/dimesns.dart';
+import 'package:watch_store_bloc/res/stings.dart';
+import 'package:watch_store_bloc/route/screen_names.dart';
+import 'package:watch_store_bloc/widgets/app_text_field.dart';
+import 'package:watch_store_bloc/widgets/main_button.dart';
 
 class SendOtpScreen extends StatelessWidget {
   SendOtpScreen({super.key});

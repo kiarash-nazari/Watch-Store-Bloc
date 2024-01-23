@@ -1,7 +1,8 @@
-import 'package:bloc_watch_store/components/theme.dart';
-import 'package:bloc_watch_store/route/routes.dart';
-import 'package:bloc_watch_store/route/screen_names.dart';
+
 import 'package:flutter/material.dart';
+import 'package:watch_store_bloc/components/theme.dart';
+import 'package:watch_store_bloc/route/routes.dart';
+import 'package:watch_store_bloc/route/screen_names.dart';
 
 void main() {
   runApp(const MyApp());

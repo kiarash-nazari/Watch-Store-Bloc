@@ -1,6 +1,7 @@
-import 'package:bloc_watch_store/components/button_style.dart';
-import 'package:bloc_watch_store/components/text_style.dart';
+
 import 'package:flutter/material.dart';
+import 'package:watch_store_bloc/components/button_style.dart';
+import 'package:watch_store_bloc/components/text_style.dart';
 
 class MainButton extends StatelessWidget {
   MainButton({super.key, required this.onPressed, required this.text});
