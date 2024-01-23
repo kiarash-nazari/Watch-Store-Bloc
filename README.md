@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-# bloc_watch_store
+# watch_store_bloc
 
 A new Flutter project.
 
@@ -15,6 +14,3 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
-=======
-# Watch-Store-Bloc
->>>>>>> 719fd62b2aae2b6f22912268e1ada9058c11cdfe

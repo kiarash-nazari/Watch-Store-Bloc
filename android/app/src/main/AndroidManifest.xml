@@ -1,7 +1,6 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.bloc_watch_store">
-   <application
-        android:label="bloc_watch_store"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application
+        android:label="watch_store_bloc"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

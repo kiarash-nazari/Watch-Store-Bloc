@@ -1,6 +1,6 @@
 {
-    "name": "bloc_watch_store",
-    "short_name": "bloc_watch_store",
+    "name": "watch_store_bloc",
+    "short_name": "watch_store_bloc",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
