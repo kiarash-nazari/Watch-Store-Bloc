@@ -58,6 +58,47 @@ class HomeScreen extends StatelessWidget {
                 onTap: () {},
               ),
             ],
+          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            reverse: true,
+            child: Row(
+              children: [
+                SizedBox(
+                  height: 300,
+                  child: ListView.builder(
+                    physics: const ClampingScrollPhysics(),
+                    scrollDirection: Axis.horizontal,
+                    shrinkWrap: true,
+                    itemCount: 8,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        margin: const EdgeInsets.all(Dimens.meduim),
+                        color: Colors.black,
+                        height: 298,
+                        width: 200,
+                      );
+                    },
+                  ),
+                ),
+                RotatedBox(
+                  quarterTurns: -1,
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          RotatedBox(
+                              quarterTurns: 1,
+                              child: SvgPicture.asset(Assets.svg.back)),
+                          const Text(AppStrings.viewAll)
+                        ],
+                      ),
+                      const Text(AppStrings.amazing)
+                    ],
+                  ),
+                )
+              ],
+            ),
           )
         ]),
       )),
