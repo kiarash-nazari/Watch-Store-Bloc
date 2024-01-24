@@ -73,10 +73,45 @@ class HomeScreen extends StatelessWidget {
                     itemCount: 8,
                     itemBuilder: (BuildContext context, int index) {
                       return Container(
+                        padding: const EdgeInsets.all(Dimens.meduim),
                         margin: const EdgeInsets.all(Dimens.meduim),
-                        color: Colors.black,
                         height: 298,
                         width: 200,
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                              colors: AppColors.productBgGradiant,
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter),
+                          borderRadius: BorderRadius.circular(Dimens.meduim),
+                        ),
+                        child: Column(children: [
+                          Image.asset(Assets.png.unnamed.path),
+                          const Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              "ساعت مردانه",
+                              style: LightTextAppStyle.productTitle,
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Column(
+                                children: [
+                                  Text("63,500 تومان"),
+                                  Text("55,500 "),
+                                ],
+                              ),
+                              Container(
+                                padding: const EdgeInsets.all(Dimens.small / 2),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(60),
+                                    color: AppColors.discount),
+                                child: const Text("20%"),
+                              )
+                            ],
+                          )
+                        ]),
                       );
                     },
                   ),

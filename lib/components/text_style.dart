@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:watch_store_bloc/gen/fonts.gen.dart';
 import 'package:watch_store_bloc/res/colors.dart';
@@ -11,6 +10,11 @@ class LightTextAppStyle {
     fontSize: 14,
     color: AppColors.title,
   );
+  static const TextStyle productTitle = TextStyle(
+      fontFamily: FontFamily.dana,
+      fontSize: 18,
+      color: AppColors.title,
+      fontWeight: FontWeight.w500);
   static const TextStyle navigationBtmActive = TextStyle(
     fontFamily: FontFamily.dana,
     fontSize: 12,
