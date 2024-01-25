@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:watch_store_bloc/components/theme.dart';
 import 'package:watch_store_bloc/route/routes.dart';
@@ -17,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: lightTheme(),
-      initialRoute: ScreenNames.rootScreen,
+      initialRoute: ScreenNames.productListScreen,
       routes: routes,
     );
   }

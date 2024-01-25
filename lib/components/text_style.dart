@@ -60,4 +60,9 @@ class LightTextAppStyle {
     fontSize: 14,
     color: AppColors.primaryColor,
   );
+  static const TextStyle badge = TextStyle(
+      fontFamily: FontFamily.dana,
+      fontSize: 15,
+      color: AppColors.mainButtonText,
+      fontWeight: FontWeight.w500);
 }
