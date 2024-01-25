@@ -39,6 +39,7 @@ class AppColors {
   static const Color focusedTextField = Colors.white;
   static const Color unFocusedTextField = Color.fromARGB(255, 251, 251, 251);
   static const Color mainButtonText = Color.fromARGB(255, 255, 255, 255);
+  static const Color tagList = Color.fromARGB(255, 255, 255, 255);
   static const Color btmNavColor = Color.fromARGB(255, 255, 255, 255);
   static const Color btmNavActiveItem = Color.fromARGB(255, 0, 0, 0);
   static const Color btmNavInActiveItem = Color.fromARGB(255, 196, 196, 196);

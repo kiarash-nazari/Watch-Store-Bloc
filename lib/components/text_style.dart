@@ -65,4 +65,9 @@ class LightTextAppStyle {
       fontSize: 15,
       color: AppColors.mainButtonText,
       fontWeight: FontWeight.w500);
+  static const TextStyle tagList = TextStyle(
+      fontFamily: FontFamily.dana,
+      fontSize: 15,
+      color: AppColors.tagList,
+      fontWeight: FontWeight.w400);
 }

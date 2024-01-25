@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:watch_store_bloc/components/extention.dart';
-import 'package:watch_store_bloc/components/text_style.dart';
 import 'package:watch_store_bloc/gen/assets.gen.dart';
 import 'package:watch_store_bloc/res/colors.dart';
-import 'package:watch_store_bloc/res/dimesns.dart';
 import 'package:watch_store_bloc/res/stings.dart';
 import 'package:watch_store_bloc/widgets/app_slider.dart';
 import 'package:watch_store_bloc/widgets/cat_widget.dart';
@@ -60,12 +56,11 @@ class HomeScreen extends StatelessWidget {
               ),
             ],
           ),
-          ProductItem(
+          ListOfProductItem(
             img: Assets.png.unnamed.path,
             productName: "ساعت مردانه",
             price: 68900,
             discount: 20,
-            oldPrice: 87000,
             timer: 1,
           )
         ]),

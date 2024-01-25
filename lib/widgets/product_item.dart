@@ -7,13 +7,13 @@ import 'package:watch_store_bloc/res/colors.dart';
 import 'package:watch_store_bloc/res/dimesns.dart';
 import 'package:watch_store_bloc/res/stings.dart';
 
-class ProductItem extends StatelessWidget {
-  const ProductItem({
+//List View Item
+class ListOfProductItem extends StatelessWidget {
+  const ListOfProductItem({
     super.key,
     required this.img,
     required this.productName,
     required this.price,
-    this.oldPrice = 0,
     this.discount = 0,
     this.timer = 0,
   });
@@ -21,7 +21,6 @@ class ProductItem extends StatelessWidget {
   final String img;
   final String productName;
   final int price;
-  final int oldPrice;
   final int discount;
   final int timer;
   @override
@@ -39,77 +38,13 @@ class ProductItem extends StatelessWidget {
               shrinkWrap: true,
               itemCount: 8,
               itemBuilder: (BuildContext context, int index) {
-                return Container(
-                  padding: const EdgeInsets.all(Dimens.meduim),
-                  margin: const EdgeInsets.all(Dimens.meduim),
-                  width: 200,
-                  decoration: BoxDecoration(
-                    gradient: const LinearGradient(
-                        colors: AppColors.productBgGradiant,
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter),
-                    borderRadius: BorderRadius.circular(Dimens.meduim),
-                  ),
-                  child: Column(children: [
-                    Image.asset(img),
-                    Dimens.meduim.height,
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: Text(
-                        productName,
-                        style: LightTextAppStyle.productTitle,
-                      ),
-                    ),
-                    Dimens.meduim.height,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "${price.formatPrice()} تومان",
-                              style: LightTextAppStyle.price,
-                            ),
-                            Visibility(
-                              visible: discount != 0,
-                              child: Text(
-                                "${oldPrice.formatPrice()} ",
-                                style: LightTextAppStyle.oldPrice,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Visibility(
-                          visible: discount != 0,
-                          child: Container(
-                            padding: const EdgeInsets.all(Dimens.small / 2),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(60),
-                                color: AppColors.discount),
-                            child: Text("$discount %"),
-                          ),
-                        )
-                      ],
-                    ),
-                    Dimens.meduim.height,
-                    Visibility(
-                      visible: timer != 0,
-                      child: Container(
-                        height: 1,
-                        width: double.infinity,
-                        color: AppColors.primaryColor,
-                      ),
-                    ),
-                    Dimens.small.height,
-                    Visibility(
-                      visible: timer != 0,
-                      child: const Text(
-                        "09:26:22",
-                        style: LightTextAppStyle.timerDiscount,
-                      ),
-                    )
-                  ]),
+                return ProductItem(
+                  img: img,
+                  productName: productName,
+                  price: price,
+                  discount: discount,
+                  timer: timer,
+                  oldPrice: 0,
                 );
               },
             ),
@@ -132,6 +67,102 @@ class ProductItem extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+}
+
+//Single Item
+class ProductItem extends StatelessWidget {
+  const ProductItem({
+    super.key,
+    required this.img,
+    required this.productName,
+    required this.price,
+    required this.discount,
+    required this.oldPrice,
+    required this.timer,
+  });
+
+  final String img;
+  final String productName;
+  final int price;
+  final int discount;
+  final int oldPrice;
+  final int timer;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(Dimens.meduim),
+      margin: const EdgeInsets.all(Dimens.meduim),
+      width: 200,
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+            colors: AppColors.productBgGradiant,
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter),
+        borderRadius: BorderRadius.circular(Dimens.meduim),
+      ),
+      child: Column(children: [
+        Image.asset(img),
+        Dimens.meduim.height,
+        Align(
+          alignment: Alignment.centerRight,
+          child: Text(
+            productName,
+            style: LightTextAppStyle.productTitle,
+          ),
+        ),
+        Dimens.meduim.height,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "${price.formatPrice()} تومان",
+                  style: LightTextAppStyle.price,
+                ),
+                Visibility(
+                  visible: discount != 0,
+                  child: Text(
+                    "${oldPrice.formatPrice()} ",
+                    style: LightTextAppStyle.oldPrice,
+                  ),
+                ),
+              ],
+            ),
+            Visibility(
+              visible: discount != 0,
+              child: Container(
+                padding: const EdgeInsets.all(Dimens.small / 2),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(60),
+                    color: AppColors.discount),
+                child: Text("$discount %"),
+              ),
+            )
+          ],
+        ),
+        Dimens.meduim.height,
+        Visibility(
+          visible: timer != 0,
+          child: Container(
+            height: 1,
+            width: double.infinity,
+            color: AppColors.primaryColor,
+          ),
+        ),
+        Dimens.small.height,
+        Visibility(
+          visible: timer != 0,
+          child: const Text(
+            "09:26:22",
+            style: LightTextAppStyle.timerDiscount,
+          ),
+        )
+      ]),
     );
   }
 }
