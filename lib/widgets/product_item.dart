@@ -114,37 +114,7 @@ class ProductItem extends StatelessWidget {
           ),
         ),
         Dimens.meduim.height,
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "${price.formatPrice()} تومان",
-                  style: LightTextAppStyle.price,
-                ),
-                Visibility(
-                  visible: discount != 0,
-                  child: Text(
-                    "${oldPrice.formatPrice()} ",
-                    style: LightTextAppStyle.oldPrice,
-                  ),
-                ),
-              ],
-            ),
-            Visibility(
-              visible: discount != 0,
-              child: Container(
-                padding: const EdgeInsets.all(Dimens.small / 2),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(60),
-                    color: AppColors.discount),
-                child: Text("$discount %"),
-              ),
-            )
-          ],
-        ),
+        PriceAndDiscount(discount: discount, price: price),
         Dimens.meduim.height,
         Visibility(
           visible: timer != 0,
@@ -163,6 +133,52 @@ class ProductItem extends StatelessWidget {
           ),
         )
       ]),
+    );
+  }
+}
+
+class PriceAndDiscount extends StatelessWidget {
+  const PriceAndDiscount({
+    super.key,
+    required this.discount,
+    required this.price,
+  });
+
+  final int discount;
+  final int price;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "${discount > 0 ? (price - price * discount / 100).round().formatPrice() : price.formatPrice()} تومان",
+              style: LightTextAppStyle.price,
+            ),
+            Visibility(
+              visible: discount != 0,
+              child: Text(
+                "${price.formatPrice()} ",
+                style: LightTextAppStyle.oldPrice,
+              ),
+            ),
+          ],
+        ),
+        Visibility(
+          visible: discount != 0,
+          child: Container(
+            padding: const EdgeInsets.all(Dimens.small / 2),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(60),
+                color: AppColors.discount),
+            child: Text("$discount %"),
+          ),
+        )
+      ],
     );
   }
 }

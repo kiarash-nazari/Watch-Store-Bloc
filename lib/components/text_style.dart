@@ -50,6 +50,11 @@ class LightTextAppStyle {
       fontSize: 15,
       color: AppColors.mainButtonText,
       fontWeight: FontWeight.w500);
+  static const TextStyle addToBasketMainButton = TextStyle(
+      fontFamily: FontFamily.dana,
+      fontSize: 9,
+      color: AppColors.mainButtonText,
+      fontWeight: FontWeight.w700);
   static const TextStyle primeriLinks = TextStyle(
       fontFamily: FontFamily.dana,
       fontSize: 15,
@@ -70,4 +75,17 @@ class LightTextAppStyle {
       fontSize: 15,
       color: AppColors.tagList,
       fontWeight: FontWeight.w400);
+
+  static TextStyle caption = TextStyle(
+      fontFamily: FontFamily.dana,
+      fontSize: 13,
+      color: AppColors.title.withAlpha(150),
+      fontWeight: FontWeight.normal);
+
+  static TextStyle unSelectedTab = TextStyle(
+      fontFamily: FontFamily.dana,
+      fontSize: 14,
+      color: AppColors.title.withAlpha(125));
+  static const TextStyle selectedTab = TextStyle(
+      fontFamily: FontFamily.dana, fontSize: 14, color: AppColors.title);
 }

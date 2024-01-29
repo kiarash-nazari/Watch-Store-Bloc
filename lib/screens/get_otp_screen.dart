@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:watch_store_bloc/components/extention.dart';
 import 'package:watch_store_bloc/components/text_style.dart';
@@ -40,10 +39,13 @@ class GetOtpScreen extends StatelessWidget {
                 hint: AppStrings.hintVerificationCode,
                 controller: _textEditingController),
             MainButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, ScreenNames.registerationScreen);
-                },
-                text: AppStrings.next)
+              onPressed: () {
+                Navigator.pushNamed(context, ScreenNames.registerationScreen);
+              },
+              text: AppStrings.next,
+              height: .07,
+              width: .75,
+            )
           ],
         ),
       ),

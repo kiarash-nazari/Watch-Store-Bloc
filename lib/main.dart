@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: lightTheme(),
-      initialRoute: ScreenNames.productListScreen,
+      initialRoute: ScreenNames.singleproductscreen,
       routes: routes,
     );
   }

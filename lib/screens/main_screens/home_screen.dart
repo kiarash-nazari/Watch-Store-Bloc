@@ -60,7 +60,7 @@ class HomeScreen extends StatelessWidget {
             img: Assets.png.unnamed.path,
             productName: "ساعت مردانه",
             price: 68900,
-            discount: 20,
+            discount: 25,
             timer: 1,
           )
         ]),

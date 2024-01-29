@@ -5,6 +5,7 @@ import 'package:watch_store_bloc/components/text_style.dart';
 import 'package:watch_store_bloc/gen/assets.gen.dart';
 import 'package:watch_store_bloc/res/colors.dart';
 import 'package:watch_store_bloc/res/dimesns.dart';
+import 'package:watch_store_bloc/widgets/badge.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSize {
   const CustomAppBar({
@@ -43,33 +44,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSize {
           padding: const EdgeInsets.symmetric(horizontal: Dimens.meduim),
           child:
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            Visibility(
-              visible: cart,
-              child: Stack(children: [
-                SvgPicture.asset(
-                  Assets.svg.cart,
-                  colorFilter:
-                      const ColorFilter.mode(AppColors.title, BlendMode.srcIn),
-                ),
-                Positioned(
-                  right: 0,
-                  top: -5,
-                  child: Visibility(
-                    visible: badge != 0,
-                    child: Container(
-                      padding: const EdgeInsets.all(Dimens.small / 2),
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: AppColors.discount,
-                      ),
-                      child: Text(
-                        badge.toString(),
-                        style: LightTextAppStyle.badge,
-                      ),
-                    ),
-                  ),
-                )
-              ]),
+            BadgeWidget(
+              cart: cart,
+              badge: badge,
+              onTap: () {},
             ),
             Visibility(
               visible: pageTitle != "",

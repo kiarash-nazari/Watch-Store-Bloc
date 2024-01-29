@@ -1,11 +1,12 @@
-
 import 'package:flutter/material.dart';
+import 'package:watch_store_bloc/components/text_style.dart';
 import 'package:watch_store_bloc/gen/assets.gen.dart';
 import 'package:watch_store_bloc/res/colors.dart';
 import 'package:watch_store_bloc/res/stings.dart';
 import 'package:watch_store_bloc/screens/main_screens/bascket_screen.dart';
 import 'package:watch_store_bloc/screens/main_screens/home_screen.dart';
 import 'package:watch_store_bloc/screens/main_screens/profile_screen.dart';
+import 'package:watch_store_bloc/widgets/badge.dart';
 import 'package:watch_store_bloc/widgets/navigation_button.dart';
 
 class ScreenButtonNavigationIndex {
@@ -104,15 +105,39 @@ class _MainScreenState extends State<MainScreen> {
                             index: ScreenButtonNavigationIndex.profilIndex);
                       },
                     ),
-                    NavigationButton(
-                      svgPath: Assets.svg.cart,
-                      title: AppStrings.basket,
-                      isActive:
-                          indexStack == ScreenButtonNavigationIndex.basketIndex,
-                      onTap: () {
-                        btnNavOnPress(
-                            index: ScreenButtonNavigationIndex.basketIndex);
-                      },
+                    // NavigationButton(
+                    //   svgPath: Assets.svg.cart,
+                    //   title: AppStrings.basket,
+                    //   isActive:
+                    //       indexStack == ScreenButtonNavigationIndex.basketIndex,
+                    //   onTap: () {
+                    //     btnNavOnPress(
+                    //         index: ScreenButtonNavigationIndex.basketIndex);
+                    //   },
+                    // ),
+
+                    //TODO badge count is static change to dynamic
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        BadgeWidget(
+                          cart: true,
+                          badge: 2,
+                          onTap: () {
+                            btnNavOnPress(
+                                index: ScreenButtonNavigationIndex.basketIndex);
+                          },
+                          isActive: indexStack ==
+                              ScreenButtonNavigationIndex.basketIndex,
+                        ),
+                        Text(
+                          AppStrings.basket,
+                          style: indexStack ==
+                                  ScreenButtonNavigationIndex.basketIndex
+                              ? LightTextAppStyle.navigationBtmActive
+                              : LightTextAppStyle.navigationBtmInActive,
+                        )
+                      ],
                     ),
                     NavigationButton(
                       svgPath: Assets.svg.home,

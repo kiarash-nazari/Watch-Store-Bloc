@@ -6,4 +6,5 @@ class ScreenNames {
   static const getOtpScreen = "getOtpScreen";
   static const mainScreen = "mainScreen";
   static const productListScreen = "productListScreen";
+  static const singleproductscreen = "singleproductscreen";
 }

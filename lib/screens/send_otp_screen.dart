@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:watch_store_bloc/components/extention.dart';
 import 'package:watch_store_bloc/gen/assets.gen.dart';
@@ -30,10 +29,13 @@ class SendOtpScreen extends StatelessWidget {
                 hint: AppStrings.hintPhoneNumber,
                 controller: _textEditingController),
             MainButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, ScreenNames.getOtpScreen);
-                },
-                text: AppStrings.next)
+              onPressed: () {
+                Navigator.pushNamed(context, ScreenNames.getOtpScreen);
+              },
+              text: AppStrings.next,
+              height: .07,
+              width: 0.75,
+            )
           ],
         ),
       ),

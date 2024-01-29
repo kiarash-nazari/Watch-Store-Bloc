@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:watch_store_bloc/components/extention.dart';
 import 'package:watch_store_bloc/res/dimesns.dart';
@@ -55,6 +54,8 @@ class RegisterScreen extends StatelessWidget {
                       Navigator.pushNamed(context, ScreenNames.mainScreen);
                     },
                     text: AppStrings.next,
+                    height: .07,
+                    width: .75,
                   ),
                   Dimens.large.height,
                 ]),
