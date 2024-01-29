@@ -15,12 +15,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSize {
     this.badge = 0,
     this.cart = false,
     this.pageTitle = "",
+    this.closeWindow = true,
   });
   final String svgPath;
   final String productName;
   final String pageTitle;
   final int badge;
   final bool cart;
+  final bool closeWindow;
 
   @override
   Widget build(BuildContext context) {
@@ -61,9 +63,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSize {
             ),
             Row(
               children: [
-                if (productName != "") Text(productName),
+                if (productName != "")
+                  Text(
+                    productName,
+                    style: LightTextAppStyle.title,
+                  ),
                 Dimens.small.width,
-                SvgPicture.asset(Assets.svg.close),
+                Visibility(
+                    visible: closeWindow,
+                    child: SvgPicture.asset(Assets.svg.close)),
               ],
             ),
           ]),

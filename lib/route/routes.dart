@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:watch_store_bloc/route/screen_names.dart';
+import 'package:watch_store_bloc/screens/cart_screen.dart';
 import 'package:watch_store_bloc/screens/get_otp_screen.dart';
 import 'package:watch_store_bloc/screens/main_screens/main_screen.dart';
 import 'package:watch_store_bloc/screens/product_list_screen.dart';
@@ -14,4 +15,5 @@ Map<String, Widget Function(BuildContext)> routes = {
   ScreenNames.registerationScreen: (context) => const RegisterScreen(),
   ScreenNames.mainScreen: (context) => const MainScreen(),
   ScreenNames.productListScreen: (context) => const ProductListScreen(),
+  ScreenNames.cartscreen: (context) => const CartScreen()
 };

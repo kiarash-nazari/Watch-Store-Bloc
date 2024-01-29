@@ -79,6 +79,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/postal_code.svg
   String get postalCode => 'assets/svg/postal_code.svg';
 
+  /// File path: assets/svg/postal_code.svg
+  String get plus => 'assets/svg/plus.svg';
+
   /// File path: assets/svg/search.svg
   String get search => 'assets/svg/search.svg';
 
@@ -97,6 +100,7 @@ class $AssetsSvgGen {
   /// List of all assets
   List<String> get values => [
         avatar,
+        plus,
         back,
         cancelled,
         cart,
