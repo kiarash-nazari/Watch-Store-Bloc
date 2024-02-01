@@ -3,18 +3,20 @@ import 'package:watch_store_bloc/components/button_style.dart';
 import 'package:watch_store_bloc/components/text_style.dart';
 
 class MainButton extends StatelessWidget {
-  MainButton(
+  const MainButton(
       {super.key,
       required this.onPressed,
       required this.text,
       required this.height,
       required this.width,
-      this.textStyle = LightTextAppStyle.mainButton});
-  void Function() onPressed;
+      this.textStyle = LightTextAppStyle.mainButton,
+      this.buttonStyle});
+  final void Function() onPressed;
   final String text;
   final double height;
   final double width;
   final TextStyle? textStyle;
+  final ButtonStyle? buttonStyle;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -22,7 +24,7 @@ class MainButton extends StatelessWidget {
       height: size.height * height,
       width: size.width * width,
       child: ElevatedButton(
-        style: AppButtonStyle.mainButtonStyle,
+        style: buttonStyle,
         onPressed: onPressed,
         child: Text(
           text,

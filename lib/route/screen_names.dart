@@ -8,4 +8,5 @@ class ScreenNames {
   static const productListScreen = "productListScreen";
   static const singleproductscreen = "singleproductscreen";
   static const cartscreen = "cartscreen";
+  static const profilescreen = "profilescreen";
 }

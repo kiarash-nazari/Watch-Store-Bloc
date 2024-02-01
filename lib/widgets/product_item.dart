@@ -142,10 +142,12 @@ class PriceAndDiscount extends StatelessWidget {
     super.key,
     required this.discount,
     required this.price,
+    this.all = "",
   });
 
   final int discount;
   final int price;
+  final String all;
 
   @override
   Widget build(BuildContext context) {
@@ -153,11 +155,13 @@ class PriceAndDiscount extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "${discount > 0 ? (price - price * discount / 100).round().formatPrice() : price.formatPrice()} تومان",
+              "$all ${discount > 0 ? (price - price * discount / 100).round().formatPrice() : price.formatPrice()} تومان",
               style: LightTextAppStyle.price,
+              textDirection: TextDirection.rtl,
             ),
             Visibility(
               visible: discount != 0,

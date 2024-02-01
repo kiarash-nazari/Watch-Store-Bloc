@@ -3,16 +3,16 @@ import 'package:watch_store_bloc/components/text_style.dart';
 import 'package:watch_store_bloc/gen/assets.gen.dart';
 import 'package:watch_store_bloc/res/colors.dart';
 import 'package:watch_store_bloc/res/stings.dart';
-import 'package:watch_store_bloc/screens/main_screens/bascket_screen.dart';
-import 'package:watch_store_bloc/screens/main_screens/home_screen.dart';
+import 'package:watch_store_bloc/screens/cart_screen.dart';
 import 'package:watch_store_bloc/screens/main_screens/profile_screen.dart';
+import 'package:watch_store_bloc/screens/main_screens/home_screen.dart';
 import 'package:watch_store_bloc/widgets/badge.dart';
 import 'package:watch_store_bloc/widgets/navigation_button.dart';
 
 class ScreenButtonNavigationIndex {
   static const homeIndex = 0;
   static const profilIndex = 1;
-  static const basketIndex = 2;
+  static const cartIndex = 2;
 }
 
 class MainScreen extends StatefulWidget {
@@ -27,12 +27,12 @@ List<int> routeHistory = [0];
 int indexStack = ScreenButtonNavigationIndex.homeIndex;
 final GlobalKey<NavigatorState> _homeScreenKey = GlobalKey();
 final GlobalKey<NavigatorState> _profileScreenKey = GlobalKey();
-final GlobalKey<NavigatorState> _bascketScreenKey = GlobalKey();
+final GlobalKey<NavigatorState> _cartScreenKey = GlobalKey();
 
 Map<int, GlobalKey<NavigatorState>> map = {
   ScreenButtonNavigationIndex.homeIndex: _homeScreenKey,
   ScreenButtonNavigationIndex.profilIndex: _profileScreenKey,
-  ScreenButtonNavigationIndex.basketIndex: _bascketScreenKey
+  ScreenButtonNavigationIndex.cartIndex: _cartScreenKey
 };
 
 class _MainScreenState extends State<MainScreen> {
@@ -48,7 +48,6 @@ class _MainScreenState extends State<MainScreen> {
         indexStack = routeHistory.last;
         setState(() {});
       }
-      print(routeHistory);
     });
     return PopScope(
       canPop: false,
@@ -76,9 +75,9 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                 ),
                 Navigator(
-                  key: _bascketScreenKey,
+                  key: _cartScreenKey,
                   onGenerateRoute: (settings) => MaterialPageRoute(
-                    builder: (context) => const BascketScreen(),
+                    builder: (context) => const CartScreen(),
                   ),
                 ),
               ],
@@ -125,15 +124,15 @@ class _MainScreenState extends State<MainScreen> {
                           badge: 2,
                           onTap: () {
                             btnNavOnPress(
-                                index: ScreenButtonNavigationIndex.basketIndex);
+                                index: ScreenButtonNavigationIndex.cartIndex);
                           },
                           isActive: indexStack ==
-                              ScreenButtonNavigationIndex.basketIndex,
+                              ScreenButtonNavigationIndex.cartIndex,
                         ),
                         Text(
                           AppStrings.basket,
                           style: indexStack ==
-                                  ScreenButtonNavigationIndex.basketIndex
+                                  ScreenButtonNavigationIndex.cartIndex
                               ? LightTextAppStyle.navigationBtmActive
                               : LightTextAppStyle.navigationBtmInActive,
                         )

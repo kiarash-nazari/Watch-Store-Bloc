@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:watch_store_bloc/components/button_style.dart';
 import 'package:watch_store_bloc/components/text_style.dart';
 import 'package:watch_store_bloc/gen/assets.gen.dart';
 import 'package:watch_store_bloc/res/colors.dart';
@@ -68,6 +69,7 @@ class SingleProductScreen extends StatelessWidget {
                   children: [
                     const PriceAndDiscount(discount: 20, price: 5000),
                     MainButton(
+                      buttonStyle: AppButtonStyle.mainButtonStyle,
                       textStyle: LightTextAppStyle.addToBasketMainButton,
                       onPressed: () {},
                       text: AppStrings.addToBasket,

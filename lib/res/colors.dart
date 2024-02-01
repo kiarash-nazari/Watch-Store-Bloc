@@ -25,6 +25,7 @@ class AppColors {
   static const Color title = Colors.black;
   static const Color price = Colors.black;
   static const Color discount = Color.fromARGB(255, 237, 56, 56);
+  static const Color mainRed = Color.fromARGB(190, 237, 56, 56);
   static const Color oldPrice = Color.fromARGB(255, 191, 191, 191);
   static const Color shadow = Color.fromARGB(70, 0, 0, 0);
   static const Color hint = Colors.grey;

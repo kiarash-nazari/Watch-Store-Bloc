@@ -2,12 +2,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:watch_store_bloc/components/button_style.dart';
 import 'package:watch_store_bloc/components/extention.dart';
+import 'package:watch_store_bloc/components/text_style.dart';
 import 'package:watch_store_bloc/gen/assets.gen.dart';
 import 'package:watch_store_bloc/res/colors.dart';
 import 'package:watch_store_bloc/res/dimesns.dart';
 import 'package:watch_store_bloc/res/stings.dart';
 import 'package:watch_store_bloc/widgets/custom_app_barr.dart';
+import 'package:watch_store_bloc/widgets/main_button.dart';
+import 'package:watch_store_bloc/widgets/product_item.dart';
 import 'package:watch_store_bloc/widgets/shoping_cart_item.dart';
 
 class CartScreen extends StatelessWidget {
@@ -56,6 +60,30 @@ class CartScreen extends StatelessWidget {
               },
             ),
           ),
+        ),
+        Container(
+          padding: const EdgeInsets.all(Dimens.meduim),
+          height: 70,
+          width: double.infinity,
+          color: AppColors.appbar,
+          child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const PriceAndDiscount(
+                  discount: 0,
+                  price: 5000,
+                  all: "مجموع",
+                ),
+                MainButton(
+                  buttonStyle: AppButtonStyle.mainButtonStyleRed,
+                  textStyle: LightTextAppStyle.addToBasketMainButton,
+                  onPressed: () {},
+                  text: AppStrings.next,
+                  height: 0.04,
+                  width: .3,
+                )
+              ]),
         ),
       ]),
     ));
