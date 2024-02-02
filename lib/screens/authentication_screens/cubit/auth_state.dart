@@ -21,3 +21,5 @@ final class LoggedOutState extends AuthState {}
 final class RegesteredState extends AuthState {}
 
 final class UnRegesteredState extends AuthState {}
+
+final class TimerZeroState extends AuthState {}

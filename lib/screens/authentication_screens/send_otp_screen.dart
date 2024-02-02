@@ -53,6 +53,8 @@ class SendOtpScreen extends StatelessWidget {
                         context
                             .read<AuthCubit>()
                             .sendSms(mobile: _textEditingController.text);
+
+                        context.read<AuthCubit>().timer();
                       } else {
                         ScaffoldMessenger.of(context)
                             .showSnackBar(const SnackBar(

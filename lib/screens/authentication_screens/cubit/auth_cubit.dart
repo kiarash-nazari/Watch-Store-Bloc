@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:bloc/bloc.dart';
@@ -47,5 +48,26 @@ class AuthCubit extends Cubit<AuthState> {
     } catch (e) {
       emit(ErrorState());
     }
+  }
+
+  late Timer? _timer;
+  int start = 180;
+  timer() {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (start == 0) {
+        _timer?.cancel();
+        emit(TimerZeroState());
+        // Navigator.of(context).pop();
+      } else {
+        start--;
+      }
+    });
+  }
+
+  String formatTime(int sec) {
+    String showMinutes = (sec ~/ 60).toString().padLeft(2, '0');
+    String showSeconds = (sec % 60).toString().padLeft(2, '0');
+
+    return "$showMinutes:$showSeconds";
   }
 }

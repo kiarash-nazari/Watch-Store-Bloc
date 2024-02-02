@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:watch_store_bloc/components/theme.dart';
 import 'package:watch_store_bloc/route/routes.dart';
-import 'package:watch_store_bloc/route/screen_names.dart';
 import 'package:watch_store_bloc/screens/authentication_screens/cubit/auth_cubit.dart';
 import 'package:watch_store_bloc/screens/authentication_screens/send_otp_screen.dart';
 

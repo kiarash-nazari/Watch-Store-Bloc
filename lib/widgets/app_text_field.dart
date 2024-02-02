@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:watch_store_bloc/components/extention.dart';
 import 'package:watch_store_bloc/components/text_style.dart';
@@ -6,7 +5,7 @@ import 'package:watch_store_bloc/res/dimesns.dart';
 
 class AppTextField extends StatelessWidget {
   final String lable;
-  final String prefixlable;
+  final Widget prefixlable;
   final String hint;
   final Widget icon;
   final TextEditingController controller;
@@ -16,9 +15,12 @@ class AppTextField extends StatelessWidget {
   const AppTextField({
     super.key,
     required this.lable,
-    this.prefixlable = '',
+    this.prefixlable = const SizedBox(),
     required this.hint,
-    this.icon = const SizedBox(),
+    this.icon = const Text(
+      "",
+      style: LightTextAppStyle.title,
+    ),
     required this.controller,
     this.inputType,
     this.textAlign = TextAlign.center,
@@ -36,10 +38,7 @@ class AppTextField extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                prefixlable,
-                style: LightTextAppStyle.title,
-              ),
+              prefixlable,
               Text(
                 lable,
                 style: LightTextAppStyle.title,

@@ -78,7 +78,7 @@ class _GetOtpScreenState extends State<GetOtpScreen> {
             ),
             Dimens.meduim.height,
             AppTextField(
-                prefixlable: formatTime(_start),
+                prefixlable: Text(formatTime(_start)),
                 lable: AppStrings.enterVerificationCode,
                 hint: AppStrings.hintVerificationCode,
                 controller: _textEditingController),
