@@ -13,37 +13,12 @@ import 'package:watch_store_bloc/screens/authentication_screens/cubit/auth_cubit
 import 'package:watch_store_bloc/widgets/app_text_field.dart';
 import 'package:watch_store_bloc/widgets/main_button.dart';
 
-class GetOtpScreen extends StatefulWidget {
-  const GetOtpScreen({super.key});
+class GetOtpScreen extends StatelessWidget {
+  GetOtpScreen({super.key});
 
-  @override
-  State<GetOtpScreen> createState() => _GetOtpScreenState();
-}
-
-class _GetOtpScreenState extends State<GetOtpScreen> {
   final TextEditingController _textEditingController = TextEditingController();
 
-  @override
-  void initState() {
-    super.initState();
-    timer();
-  }
-
-  late Timer? _timer;
-  int _start = 180;
-  timer() {
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      setState(() {
-        if (_start == 0) {
-          _timer?.cancel();
-          // Navigator.of(context).pop();
-        } else {
-          _start--;
-        }
-      });
-    });
-  }
-
+  // late Timer? _timer;
   String formatTime(int sec) {
     String showMinutes = (sec ~/ 60).toString().padLeft(2, '0');
     String showSeconds = (sec % 60).toString().padLeft(2, '0');
@@ -77,11 +52,16 @@ class _GetOtpScreenState extends State<GetOtpScreen> {
               ),
             ),
             Dimens.meduim.height,
-            AppTextField(
-                prefixlable: Text(formatTime(_start)),
-                lable: AppStrings.enterVerificationCode,
-                hint: AppStrings.hintVerificationCode,
-                controller: _textEditingController),
+            BlocBuilder<AuthCubit, AuthState>(
+              builder: (context, state) {
+                return AppTextField(
+                    prefixlable: Text(formatTime(
+                        state is AuthTimerUpdated ? state.newTimerValue : 0)),
+                    lable: AppStrings.enterVerificationCode,
+                    hint: AppStrings.hintVerificationCode,
+                    controller: _textEditingController);
+              },
+            ),
             BlocConsumer<AuthCubit, AuthState>(
               listener: (context, state) {
                 if (state is ErrorState) {
@@ -121,16 +101,19 @@ class _GetOtpScreenState extends State<GetOtpScreen> {
                   return const CircularProgressIndicator();
                 } else {
                   return MainButton(
-                    buttonStyle:
-                        _start == 0 ? AppButtonStyle.mainButtonStyle : null,
+                    buttonStyle: state is ReSetTimerState
+                        ? AppButtonStyle.mainButtonStyle
+                        : null,
                     onPressed: () {
-                      if (_start == 0) {
+                      if (state is ReSetTimerState) {
                         context.read<AuthCubit>().sendSms(
                             mobile: mobileNumberFromArgument.toString());
-                        _start = 180;
+                        context.read<AuthCubit>().resetTimer();
+                        // context.read<AuthCubit>().timer();
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text("try after ${formatTime(_start)}"),
+                          content: Text(
+                              "try after ${formatTime(context.read<AuthCubit>().start)}"),
                           backgroundColor: Colors.red,
                         ));
                       } // Navigator.pushNamed(context, ScreenNames.getOtpScreen);

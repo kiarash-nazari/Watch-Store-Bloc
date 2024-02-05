@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:watch_store_bloc/data/res/constants.dart';
@@ -51,17 +52,27 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   late Timer? _timer;
-  int start = 180;
+  int start = 30;
   timer() {
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (start == 0) {
         _timer?.cancel();
-        emit(TimerZeroState());
-        // Navigator.of(context).pop();
+        emit(ReSetTimerState());
       } else {
         start--;
+
+        updateTimer(start);
       }
     });
+  }
+
+  void updateTimer(int newTimerValue) {
+    emit(AuthTimerUpdated(newTimerValue));
+  }
+
+  void resetTimer() {
+    start = 30;
+    timer();
   }
 
   String formatTime(int sec) {

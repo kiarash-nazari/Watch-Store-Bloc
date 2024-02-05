@@ -32,12 +32,6 @@ class SendOtpScreen extends StatelessWidget {
                 controller: _textEditingController),
             BlocConsumer<AuthCubit, AuthState>(
               listener: (context, state) {
-                // if (state is ErrorState) {
-                //   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                //     content: Text("an error occured"),
-                //     backgroundColor: Colors.red,
-                //   ));
-                // } else
                 if (state is SentSucsessState) {
                   Navigator.pushNamed(context, ScreenNames.getOtpScreen,
                       arguments: state.mobile);
