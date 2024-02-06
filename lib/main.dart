@@ -4,8 +4,11 @@ import 'package:watch_store_bloc/components/theme.dart';
 import 'package:watch_store_bloc/route/routes.dart';
 import 'package:watch_store_bloc/screens/authentication_screens/cubit/auth_cubit.dart';
 import 'package:watch_store_bloc/screens/authentication_screens/send_otp_screen.dart';
+import 'package:watch_store_bloc/utils/shared_preferences_manager.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SharedPreferencesManager().init();
   runApp(const MyApp());
 }
 

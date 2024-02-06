@@ -7,6 +7,8 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:watch_store_bloc/data/res/constants.dart';
+import 'package:watch_store_bloc/utils/shared_preferences_constants.dart';
+import 'package:watch_store_bloc/utils/shared_preferences_manager.dart';
 
 part 'auth_state.dart';
 
@@ -39,6 +41,12 @@ class AuthCubit extends Cubit<AuthState> {
 
       if (response.statusCode == 201) {
         if (response.data["data"]["is_registered"]) {
+          SharedPreferencesManager().saveString(
+              SharedPreferencesConstants.token,
+              response.data["data"][SharedPreferencesConstants.token]);
+
+          print(
+              "injAAAAAAAAAAAAAAAAAAAAA ${SharedPreferencesManager().getString(SharedPreferencesConstants.token)}");
           emit(RegesteredState());
         } else {
           emit(UnRegesteredState());
