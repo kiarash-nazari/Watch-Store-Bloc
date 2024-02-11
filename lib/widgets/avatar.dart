@@ -1,3 +1,5 @@
+import 'dart:ffi';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:watch_store_bloc/components/extention.dart';
@@ -7,26 +9,30 @@ import 'package:watch_store_bloc/res/dimesns.dart';
 import 'package:watch_store_bloc/res/stings.dart';
 
 class Avatar extends StatelessWidget {
-  Avatar({Key? key, String? avatarImg}) : super(key: key) {
-    _avatarImg = avatarImg ?? Assets.png.avatar.path;
-  }
+  const Avatar({Key? key, required this.file, required this.onTap})
+      : super(key: key);
 
-  late final String _avatarImg;
-
+  final VoidCallback? onTap;
+  final file;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(100),
-          child: Image.asset(_avatarImg),
-        ),
-        Dimens.meduim.height,
-        const Text(
-          AppStrings.chooseProfileImage,
-          style: LightTextAppStyle.avatar,
-        )
-      ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(100),
+            child: file == null
+                ? Image.asset(Assets.png.avatar.path)
+                : Image.file(file),
+          ),
+          Dimens.meduim.height,
+          const Text(
+            AppStrings.chooseProfileImage,
+            style: LightTextAppStyle.avatar,
+          )
+        ],
+      ),
     );
   }
 }
