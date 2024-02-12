@@ -21,3 +21,16 @@ final class RegisterLoadedPhotState extends RegisterState {
 }
 
 final class RegisterCanceledPhotState extends RegisterState {}
+
+final class RegisterLoadingState extends RegisterState {}
+
+final class RegisterOkResponseState extends RegisterState {}
+
+final class RegisterPickedLocationState extends RegisterState {
+  final GeoPoint geoPoint;
+  const RegisterPickedLocationState(this.geoPoint);
+  @override
+  List<Object> get props => [geoPoint];
+}
+
+final class RegisterSubmitErrorState extends RegisterState {}

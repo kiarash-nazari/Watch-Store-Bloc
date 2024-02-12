@@ -78,11 +78,21 @@ class RegisterScreen extends StatelessWidget {
                         lable: AppStrings.postalCode,
                         hint: AppStrings.hintPostalCode,
                         controller: nameLastnameControler),
-                    AppTextField(
-                      lable: AppStrings.location,
-                      hint: AppStrings.hintLocation,
-                      controller: nameLastnameControler,
-                      icon: const Icon(Icons.location_on),
+                    BlocBuilder<RegisterCubit, RegisterState>(
+                      builder: (context, state) {
+                        return GestureDetector(
+                          onTap: () {
+                            BlocProvider.of<RegisterCubit>(context)
+                                .locationPicker(context: context);
+                          },
+                          child: AppTextField(
+                            lable: AppStrings.location,
+                            hint: AppStrings.hintLocation,
+                            controller: nameLastnameControler,
+                            icon: const Icon(Icons.location_on),
+                          ),
+                        );
+                      },
                     ),
                     MainButton(
                       onPressed: () {
