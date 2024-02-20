@@ -69,3 +69,14 @@ class RegisterCubit extends Cubit<RegisterState> {
     }
   }
 }
+
+class HTTPExeption implements Exception {
+  final String message;
+
+  HTTPExeption(this.message);
+
+  @override
+  String toString() {
+    return message;
+  }
+}
