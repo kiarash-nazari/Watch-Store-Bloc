@@ -1,8 +1,7 @@
 import 'dart:convert';
-import 'dart:ffi';
 
 class User {
-  final Array image;
+  final image;
   final String phone;
   final double lng;
   final double lat;

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:watch_store_bloc/components/button_style.dart';
 import 'package:watch_store_bloc/components/text_style.dart';
 
 class MainButton extends StatelessWidget {

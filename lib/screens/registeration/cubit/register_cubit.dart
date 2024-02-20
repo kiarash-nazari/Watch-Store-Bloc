@@ -51,6 +51,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     try {
       String? token = SharedPreferencesManager()
           .getString(SharedPreferencesConstants.token);
+      print(token);
       _dio.options.headers["Authorization"] = "Bearer $token";
 
       await _dio
@@ -64,6 +65,7 @@ class RegisterCubit extends Cubit<RegisterState> {
       });
     } catch (e) {
       emit(RegisterSubmitErrorState());
+      print("SSSSSSSSSSSSSSSSSS" + e.toString());
     }
   }
 }

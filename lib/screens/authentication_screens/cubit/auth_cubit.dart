@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:math';
 
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
@@ -40,13 +39,14 @@ class AuthCubit extends Cubit<AuthState> {
           .post(EndPoints.checkSmsCode, data: {"mobile": mobile, "code": code});
 
       if (response.statusCode == 201) {
-        if (response.data["data"]["is_registered"]) {
-          SharedPreferencesManager().saveString(
-              SharedPreferencesConstants.token,
-              response.data["data"][SharedPreferencesConstants.token]);
+        print(response.data["data"]["token"]);
+        SharedPreferencesManager().saveString(SharedPreferencesConstants.token,
+            response.data["data"][SharedPreferencesConstants.token]);
 
-          print(
-              "injAAAAAAAAAAAAAAAAAAAAA ${SharedPreferencesManager().getString(SharedPreferencesConstants.token)}");
+        print(
+            "injAAAAAAAAAAAAAAAAAAAAA ${SharedPreferencesManager().getString(SharedPreferencesConstants.token)}");
+
+        if (response.data["data"]["is_registered"]) {
           emit(RegesteredState());
         } else {
           emit(UnRegesteredState());

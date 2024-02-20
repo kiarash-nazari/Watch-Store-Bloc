@@ -1,7 +1,11 @@
+import 'dart:io';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:watch_store_bloc/components/extention.dart';
+import 'package:watch_store_bloc/data/modle/user.dart';
 import 'package:watch_store_bloc/res/dimesns.dart';
 import 'package:watch_store_bloc/res/stings.dart';
 import 'package:watch_store_bloc/route/screen_names.dart';
@@ -12,12 +16,19 @@ import 'package:watch_store_bloc/widgets/main_button.dart';
 import 'package:watch_store_bloc/widgets/registration_app_bar.dart';
 
 class RegisterScreen extends StatelessWidget {
-  const RegisterScreen({super.key});
-
+  RegisterScreen({super.key});
+  TextEditingController nameLastnameControler = TextEditingController();
+  TextEditingController homeNumberControler = TextEditingController();
+  TextEditingController addressControler = TextEditingController();
+  TextEditingController postalCodeControler = TextEditingController();
+  TextEditingController locationTextControler = TextEditingController();
+  double lat = 0.0;
+  double long = 0.0;
+  File file = File("");
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    TextEditingController nameLastnameControler = TextEditingController();
+    Size size = MediaQuery.sizeOf(context);
+
     return BlocProvider(
       create: (context) => RegisterCubit(),
       child: SafeArea(
@@ -39,7 +50,7 @@ class RegisterScreen extends StatelessWidget {
                               BlocProvider.of<RegisterCubit>(context)
                                   .onPhotoChange();
                             },
-                            file: null,
+                            file: file,
                           );
                         }
                         if (state is RegisterLoadingPhotoState) {
@@ -51,15 +62,16 @@ class RegisterScreen extends StatelessWidget {
                               onTap: () {
                                 BlocProvider.of<RegisterCubit>(context)
                                     .onPhotoChange();
+                                file = state.photo;
                               },
-                              file: state.photo);
+                              file: file);
                         }
                         return Avatar(
                             onTap: () {
                               BlocProvider.of<RegisterCubit>(context)
                                   .onPhotoChange();
                             },
-                            file: null);
+                            file: file);
                       },
                     ),
                     AppTextField(
@@ -69,16 +81,24 @@ class RegisterScreen extends StatelessWidget {
                     AppTextField(
                         lable: AppStrings.homeNumber,
                         hint: AppStrings.hintHomeNumber,
-                        controller: nameLastnameControler),
+                        controller: homeNumberControler),
                     AppTextField(
                         lable: AppStrings.address,
                         hint: AppStrings.hintAddress,
-                        controller: nameLastnameControler),
+                        controller: addressControler),
                     AppTextField(
                         lable: AppStrings.postalCode,
                         hint: AppStrings.hintPostalCode,
-                        controller: nameLastnameControler),
-                    BlocBuilder<RegisterCubit, RegisterState>(
+                        controller: postalCodeControler),
+                    BlocConsumer<RegisterCubit, RegisterState>(
+                      listener: (context, state) {
+                        if (state is RegisterPickedLocationState) {
+                          locationTextControler.text =
+                              "${state.geoPoint.latitude} ${state.geoPoint.longitude}";
+                          lat = state.geoPoint.latitude;
+                          long = state.geoPoint.longitude;
+                        }
+                      },
                       builder: (context, state) {
                         return GestureDetector(
                           onTap: () {
@@ -88,19 +108,41 @@ class RegisterScreen extends StatelessWidget {
                           child: AppTextField(
                             lable: AppStrings.location,
                             hint: AppStrings.hintLocation,
-                            controller: nameLastnameControler,
+                            controller: locationTextControler,
                             icon: const Icon(Icons.location_on),
                           ),
                         );
                       },
                     ),
-                    MainButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, ScreenNames.mainScreen);
+                    BlocConsumer<RegisterCubit, RegisterState>(
+                      listener: (context, state) {
+                        if (state is RegisterOkResponseState) {
+                          Navigator.pushNamed(context, ScreenNames.mainScreen);
+                        }
+                        if (state is RegisterSubmitErrorState) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text("خطایی رخ داده")));
+                        }
                       },
-                      text: AppStrings.next,
-                      height: .07,
-                      width: .75,
+                      builder: (context, state) {
+                        return MainButton(
+                          onPressed: () async {
+                            User user = User(
+                                image: await MultipartFile.fromFile(file.path),
+                                phone: homeNumberControler.text,
+                                lng: long,
+                                lat: lat,
+                                postalCode: postalCodeControler.text,
+                                address: addressControler.text,
+                                name: nameLastnameControler.text);
+                            BlocProvider.of<RegisterCubit>(context)
+                                .submitFields(user: user);
+                          },
+                          text: AppStrings.next,
+                          height: .07,
+                          width: .75,
+                        );
+                      },
                     ),
                     Dimens.large.height,
                   ]),
